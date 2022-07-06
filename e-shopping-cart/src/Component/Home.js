@@ -8,14 +8,47 @@ const Home = () => {
 
   const {
     state: { items },
-  } = useContext(cartStore)
+    filterState: { byStock,
+      byFastDelivery,
+      byRating,
+      sort, searchQuery } } = useContext(cartStore)
 
   console.log(items);
+  const transFromProducts = () => {
+    let sortedProducts = items
+    if (sort) {
+      sortedProducts = sortedProducts.sort((a, b) => (
+        sort === "LowToHigh" ? a.price - b.price : b.price - a.price))
+    }
+
+    if (!byStock) {
+      sortedProducts = sortedProducts.filter((prod) => prod.inStock)
+    }
+
+    if (byFastDelivery) {
+      sortedProducts = sortedProducts.filter((prod) => prod.fastDelivery)
+    }
+
+    if (searchQuery) {
+      sortedProducts = sortedProducts.filter((prod) =>
+        prod.title.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    if (byRating) {
+      sortedProducts = sortedProducts.filter(prod => Math.floor(prod.rating.rate) >= byRating)
+    }
+
+    return sortedProducts
+  }
+
+
+
   return <>
     <div className="home">
       <Filter />
       <div className="productContainer">
-        {items.map((product) => (
+        {transFromProducts().map((product) => (
           <SingleProduct product={product} key={product.id} />
         ))}
       </div>
