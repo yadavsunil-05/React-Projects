@@ -36,7 +36,7 @@ const Home = () => {
     }
 
     if (byRating) {
-      sortedProducts = sortedProducts.filter(prod => Math.floor(prod.rating.rate) >= byRating)
+      sortedProducts = sortedProducts.filter(prod => Math.ceil(prod.rating.rate) >= byRating)
     }
 
     return sortedProducts
