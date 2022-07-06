@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  background-color: whitesmoke !important;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+
+.logo {
+  width: 40px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.dropDown,
+.search {
+  margin-left: 18px;
+}
+
+.home {
+  display: flex;
+  padding-top: 65px;
+}
+
+.productContainer {
+  margin-left: 270px;
+  display: flex;
+  width: 78%;
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image {
+  margin: 5px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 20px !important;
+}
+
+
+.filters {
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 10px;
+  height: 86vh;
+  position: fixed;
+  z-index: 2;
+}
+
+.filters>span {
+  padding-bottom: 20px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.prod-title {
+  font-size: 1rem;
+  color: #555;
+}
+
+.delivery {
+  font-size: 0.8rem;
+  color: rgba(102, 102, 102, 0.795) !important;
+}
+
+.prod-price {
+  color: green;
+  margin-bottom: 12px;
+}
+
+.products {
+  padding: 15px;
+  width: 290px;
+  margin: 10px;
+  border-radius: 20px !important;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+
+.ratings {
+  color: yellow;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.prod-ratings {
+  color: rgb(235, 235, 2);
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 10px !important;
+}
+
+
+.Btn-Container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media (max-width:700px) {
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
