@@ -1,0 +1,37 @@
+.single-photo {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.row-container {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.images {
+  /* width: 250px; */
+  height: 250px;
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.explore:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.cardBtn {
+  display: flex;
+  justify-content: space-between;
+}

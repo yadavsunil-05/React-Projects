@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+body {
+  background-color: whitesmoke !important;
+  font-family: 'Montserrat', sans-serif !important;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.cardTitle {
+  padding: 10px;
+  text-align: left;
+  padding-left: 15px;
+  font-size: 16px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.muted {
+  margin: 0;
+  color: rgba(85, 85, 85, 0.685);
+  font-size: 0.8rem;
+}
+
+.single-photo {
+  margin-bottom: 15px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+  padding: 0 !important;
+}
+
+.posts-container {
+  margin-top: 15px;
+  width: 100% !important;
+}
+
+
+.list-container {
+  padding: 10px;
+}
+
+
+.images {
+  width: 300px;
+  height: 300px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.socialBtn {
+  display: flex !important;
+  flex-direction: column;
+  text-align: justify;
+  color: rgba(68, 68, 68, 0.849);
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding: 20px;
+}
+
+.Btn-Container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.like-btn {
+  margin-right: 10px;
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Btn-InnerCont {
+  margin-left: 15px;
+}
+
+.actionBtn {
+  box-shadow: none !important;
+}
+
+.member-list-item,
+.chat-list-item {
+  text-align: left;
+  padding: 15px !important;
+}
+
+.member-list-item.inactive {
+  opacity: 0.5;
+}
+
+.fw-bold {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.chat-text {
+  margin-top: 3px;
+  font-size: 0.8rem;
+  color: rgba(85, 85, 85, 0.664);
+}
