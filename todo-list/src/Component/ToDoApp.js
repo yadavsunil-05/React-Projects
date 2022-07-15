@@ -17,13 +17,17 @@ const ToDoApp = () => {
   return <div className="todoapp-container">
     <div className="container">
       <h1>Todo List App</h1>
-      <form >
-        <h2> {value}</h2>
+      <form className="todoForm">
         <input type="text" value={value} onChange={addToDo} />
-        <button>Add</button>
+        <button className="add-btn">Add</button>
       </form>
       <ul>
         <li> <span>Learn react</span>
+          <button><FaRegEdit /></button>
+          <button><AiFillDelete /></button>
+        </li>
+        <li>
+          <span>Learn React</span>
           <button><FaRegEdit /></button>
           <button><AiFillDelete /></button>
         </li>
