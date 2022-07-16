@@ -31,7 +31,7 @@ function Coin() {
           <div className='info'>
             <div className='coin-heading'>
               {coin.image ? <img src={coin.image.small} /> : null}
-              <p>{coin.name} </p> /
+              <p>{coin.name} </p>
               <p>{coin.symbol}</p>
             </div>
             <div className='coin-price'>
