@@ -2,6 +2,7 @@ import NavBar from "./Component/NavBar"
 import Shorts from "./Component/Shorts";
 import "./App.css"
 import { useEffect, useState } from "react";
+import Footer from "./Component/Footer";
 
 function App() {
   const [category, setCategory] = useState("general")
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <NavBar setCategory={setCategory} />
       <Shorts news={news} />
+      <Footer />
     </div>
   );
 }

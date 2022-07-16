@@ -3,6 +3,7 @@ import app from "../assets/app.png"
 import google from "../assets/google.png"
 import error from "../assets/error.gif"
 import loader from "../assets/loader.gif"
+import { Link } from "react-router-dom"
 
 
 function Shorts({ news }) {
@@ -22,8 +23,9 @@ function Shorts({ news }) {
               </div>
               <div className="info">
                 <p className="info-heading">{sinInfo.title}</p>
-                <p className="info-subheading"> <b>short </b> by {sinInfo.author} <span>{sinInfo.publishedAt}</span></p>
-                <p className="info-desc">{`${sinInfo.content ? sinInfo.content.slice(0, 200) : sinInfo.content}.read more`}</p>
+                <p className="info-subheading"> <b>short </b> by {sinInfo.author} <span>{sinInfo.publishedAt.slice(0, 10)}</span></p>
+                <p className="info-desc">{`${sinInfo.content ? sinInfo.content.slice(0, 200) : sinInfo.content}`}
+                </p>
               </div>
             </div>
           ))

@@ -27,8 +27,8 @@ function NavBar({ setCategory }) {
         <ul>
           <h5 className="catogaries">Categories</h5>
           {
-            categories.map(cat => (
-              <li onClick={() => changeCategory(cat)}>{cat}</li>
+            categories.map(text => (
+              <li onClick={() => changeCategory(text)}>{text}</li>
             ))
           }
         </ul>
