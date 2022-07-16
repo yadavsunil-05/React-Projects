@@ -1,13 +1,18 @@
 import "./NavBar.css"
 import logo from "../assets/logo.png"
 import { useState } from "react"
+import categories from "../Data/category"
 
-function NavBar() {
+function NavBar({ setCategory }) {
 
   const [flag, setFlag] = useState(true)
 
   const showNavbar = () => {
     setFlag(!flag)
+  }
+
+  const changeCategory = (strCategory) => {
+    setCategory(strCategory)
   }
 
   return (
@@ -21,13 +26,11 @@ function NavBar() {
         </div>
         <ul>
           <h5 className="catogaries">Categories</h5>
-          <li>All News</li>
-          <li>Business</li>
-          <li>Entertainment</li>
-          <li>health</li>
-          <li>science</li>
-          <li>technology</li>
-          <li>sports</li>
+          {
+            categories.map(cat => (
+              <li onClick={() => changeCategory(cat)}>{cat}</li>
+            ))
+          }
         </ul>
       </div>
       <div className="logo">
