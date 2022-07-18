@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Footer from "./Component/Footer";
 
 function App() {
-  const [category, setCategory] = useState("general")
+  const [category, setCategory] = useState("science")
   const [news, setNews] = useState([])
 
   useEffect(() => {
