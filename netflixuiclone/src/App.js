@@ -16,7 +16,6 @@ function App() {
         <Row title="Popular on Netflix" fetchUrl={requests.fetchTopRated} />
         <Row title="Action Hereos" fetchUrl={requests.fetchActionMovies} />
         <Row title="Comedy Hungama" fetchUrl={requests.fetchComedyMovies} />
-        <Row title="Horror Stories" fetchUrl={requests.fetchHorrorMovies} />
         <Footer />
       </div>
     </div>
