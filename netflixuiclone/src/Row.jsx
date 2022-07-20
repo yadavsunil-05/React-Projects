@@ -2,7 +2,7 @@ import axios from "./axios";
 import { useEffect, useState } from "react";
 import loader from "./assets/loader.gif"
 
-const base_url = "https://image.tmdb.org/t/p/original/";
+const base_url = "https://image.tmdb.org/t/p/original";
 
 function Row({ title, fetchUrl }) {
 
@@ -16,6 +16,7 @@ function Row({ title, fetchUrl }) {
     getData()
   }, [fetchUrl])
 
+  console.log(movies);
 
   return (
     <div className="row">
