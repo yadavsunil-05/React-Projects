@@ -4,6 +4,7 @@ import requests from "./Request"
 import Footer from "./Footer";
 import Nav from "./Nav";
 import Banner from "./Banner";
+import Accordian from "./Accordian";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Row title="Popular on Netflix" fetchUrl={requests.fetchTopRated} />
         <Row title="Action Hereos" fetchUrl={requests.fetchActionMovies} />
         <Row title="Comedy Hungama" fetchUrl={requests.fetchComedyMovies} />
+        <Accordian />
         <Footer />
       </div>
     </div>

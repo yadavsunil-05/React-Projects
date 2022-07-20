@@ -21,7 +21,7 @@ function Row({ title, fetchUrl }) {
   return (
     <div className="row">
       {
-        movies.length === 0 ? <img src={loader} /> :
+        movies.length === 0 ? <img src={loader} className="loader" /> :
           <>
             <h2 className="row-title">{title}</h2>
             <span className="row-line"> </span >
