@@ -18,6 +18,7 @@ function Banner() {
       }
     }
     getData()
+    return requests
   }, [])
 
 

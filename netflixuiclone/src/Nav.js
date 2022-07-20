@@ -12,13 +12,7 @@ function Nav() {
       else
         handleShow(false)
     })
-
-    return function () {
-      window.removeEventListener("scroll")
-    }
   }, [])
-
-
 
   return (
     <div className={show ? "nav-show navbar" : "navbar"}>
