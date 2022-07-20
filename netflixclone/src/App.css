@@ -21,7 +21,7 @@ body {
   padding: 16px;
   justify-content: space-between;
   align-items: center;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 .nav-show {
