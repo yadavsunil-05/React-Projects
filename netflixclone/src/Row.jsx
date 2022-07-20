@@ -20,10 +20,16 @@ function Row({ title, fetchUrl }) {
   return (
     <div className="row">
       <h2 className="row-title">{title}</h2>
+      <span className="row-line"> </span >
       <div className="row_posters">
         {
           movies.map(movie => (
-            <img src={`${base_url}${movie.poster_path}`} alt="" className="poster-img" key={movie.id} />
+            <div key={movie.id} className="card-container">
+              <img src={`${base_url}${movie.poster_path}`} alt="poster" className="poster-img" />
+              <div className="info">
+                <p className="movie-title">{movie.original_title || movie.original_name}</p>
+              </div>
+            </div>
           ))
         }
       </div>
