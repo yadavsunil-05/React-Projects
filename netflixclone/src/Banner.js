@@ -20,7 +20,6 @@ function Banner() {
     getData()
   }, [])
 
-  console.log("Banner", movie);
 
   return (
     <header className='banner'
