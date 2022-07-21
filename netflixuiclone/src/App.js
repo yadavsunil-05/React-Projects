@@ -14,9 +14,7 @@ function App() {
         <Banner />
         <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
         <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} />
-        <Row title="Popular on Netflix" fetchUrl={requests.fetchTopRated} />
         <Row title="Action Hereos" fetchUrl={requests.fetchActionMovies} />
-        <Row title="Comedy Hungama" fetchUrl={requests.fetchComedyMovies} />
         <Accordian />
         <Footer />
       </div>
