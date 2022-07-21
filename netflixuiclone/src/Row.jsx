@@ -5,7 +5,7 @@ import ImgLoader from "./assets/img.gif"
 
 const base_url = "https://image.tmdb.org/t/p/original";
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, isLargeRow }) {
 
   const [movies, setMovies] = useState([])
 
@@ -13,6 +13,7 @@ function Row({ title, fetchUrl }) {
     async function getData() {
       const res = await axios.get(fetchUrl)
       setMovies(res.data.results);
+      return res
     }
     getData()
   }, [fetchUrl])
@@ -29,7 +30,7 @@ function Row({ title, fetchUrl }) {
               {
                 movies.map(movie => (
                   <div key={movie.id} className="card-container">
-                    <img src={`${base_url}${movie.poster_path}` ? `${base_url}${movie.poster_path}` : ImgLoader} alt="poster" className="poster-img" />
+                    <img src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt="poster" className={`${isLargeRow ? "posterLarge" : "poster-img"}`} />
                     <div className="info">
                       <p className="movie-title">{movie.original_title || movie.original_name}</p>
                     </div>

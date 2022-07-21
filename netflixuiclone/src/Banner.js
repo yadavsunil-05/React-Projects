@@ -12,13 +12,13 @@ function Banner() {
       try {
         const res = await axios.get(requests.fetchTrending)
         setMovie(res.data.results[Math.floor(Math.random() * res.data.results.length - 1)])
+        return res
       }
       catch (err) {
         console.log(err);
       }
     }
     getData()
-    return requests
   }, [])
 
 
@@ -28,7 +28,7 @@ function Banner() {
         backgroundImage: `linear-gradient(
           rgba(0, 0, 0, 0.3),
           rgba(0, 0, 0, 0.7)
-        ),url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+        ),url(https://image.tmdb.org/t/p/original${movie?.backdrop_path})`,
       }}
     >
       <div className='banner-title'>
