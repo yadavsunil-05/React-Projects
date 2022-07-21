@@ -10,7 +10,7 @@ function Banner() {
   useEffect(() => {
     async function getData() {
       try {
-        const res = await axios.get(requests.fetchActionMovies)
+        const res = await axios.get(requests.fetchTrending)
         setMovie(res.data.results[Math.floor(Math.random() * res.data.results.length - 1)])
       }
       catch (err) {
