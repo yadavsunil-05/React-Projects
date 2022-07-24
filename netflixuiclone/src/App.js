@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={
-        <div>Loading...</div>
+        <div>Page Loading...</div>
       }>
         <Nav />
         <div className="App-header">
@@ -24,7 +24,8 @@ function App() {
             isLargeRow
           />
           <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-          <Row title="Top Rated" fetchUrl={requests.fetchComedyMovies} />
+          <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
+          <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
           <Accordian />
         </div>
       </Suspense>
