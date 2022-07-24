@@ -1,27 +1,34 @@
 import "./App.css";
-import Row from "./Row";
 import requests from "./Request";
+import React, { Suspense, lazy } from "react"
 import Footer from "./Footer";
-import Nav from "./Nav";
-import Banner from "./Banner";
 import Accordian from "./Accordian";
+
+const Nav = lazy(() => import("./Nav"))
+const Banner = lazy(() => import("./Banner"))
+const Row = lazy(() => import("./Row"));
+
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <div className="App-header">
-        <Banner />
-        <Row
-          title="Netflix Originals"
-          fetchUrl={requests.fetchNetflixOriginals}
-          isLargeRow
-        />
-        <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-        <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-        <Accordian />
-        <Footer />
-      </div>
+      <Suspense fallback={
+        <div>Loading...</div>
+      }>
+        <Nav />
+        <div className="App-header">
+          <Banner />
+          <Row
+            title="Netflix Originals"
+            fetchUrl={requests.fetchNetflixOriginals}
+            isLargeRow
+          />
+          <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+          <Row title="Top Rated" fetchUrl={requests.fetchComedyMovies} />
+          <Accordian />
+        </div>
+      </Suspense>
+      <Footer />
     </div>
   );
 }
