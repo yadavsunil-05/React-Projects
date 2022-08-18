@@ -144,7 +144,8 @@ body {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   object-fit: cover;
-  transition: transform 450ms ease-in-out;
+  transition: transform 0.5s ease-in-out;
+
 }
 
 .posterLarge {
@@ -154,7 +155,7 @@ body {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   object-fit: contain;
-  transition: transform 450ms ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .poster-img:hover {

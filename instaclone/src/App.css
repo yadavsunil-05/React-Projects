@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  background-color: #fafafa;
+  padding-top: 100px;
+}
+
+.insta__logo {
+  height: 50px;
+}
+
+.app__header {
+  padding: 10px;
+  object-fit: contain;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app_btn_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 20%;
+}
+
+.app__btn {
+  background-color: #E1306C;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: normal;
+  height: 35px;
+  padding: 2px 19px;
+  color: whitesmoke;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.app_sign {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.app__input {
+  margin-bottom: 15px;
+}
