@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-
 .Book-main-cont {
   padding-top: 50px;
   background-color: rgb(241, 241, 241);
@@ -124,8 +122,9 @@
 .card-desc p {
   line-height: 24px;
   font-size: 16px;
-  color: #606060e7;
+  color: #606060d3;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .favorite {
@@ -165,9 +164,6 @@
   cursor: pointer;
 }
 
-.update-btn {
-  background-color: lightblue;
-}
 
 .update-link {
   color: white;
@@ -177,6 +173,14 @@
   background-color: #e81d1dc3;
 }
 
+.like-ai {
+  background-color: rgb(249, 142, 160);
+}
+
+.disabled {
+  background-color: lightsalmon;
+  pointer-events: none;
+}
 
 @media (max-width:400px) {
   .card-container {

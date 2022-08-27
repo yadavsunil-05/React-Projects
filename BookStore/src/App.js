@@ -1,15 +1,25 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Navbar from "./Components/Navbar"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useState, useEffect, useReducer } from "react";
+import Navbar from "./Components/Navbar";
 import Banner from "./Components/Banner";
-import Footer from "./Components/Footer"
+import Footer from "./Components/Footer";
 import AddProduct from "./Components/AddProduct";
-import SignUp from "./Components/SignUp"
-import Login from "./Components/Login"
-import PrivateComponent from "./Components/PrivateComponent"
-import "./App.css"
+import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
+import PrivateComponent from "./Components/PrivateComponent";
+import cartReducer from "./reducer/cartReducer";
+import "./App.css";
+import Cart from "./Components/Cart";
+import { createContext } from "react";
+
+const Store = createContext()
 
 function App() {
+  const initialState = {
+    cart: [],
+  };
+
+  const [state, dispatch] = useReducer(cartReducer, initialState);
   const [defbook, setdefbook] = useState([]);
 
   useEffect(() => {
@@ -25,20 +35,36 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route element={<PrivateComponent />}>
-            <Route path="/" element={<Banner defbook={defbook} />} />
-            <Route path="/add" element={<AddProduct defbook={defbook} setdefbook={setdefbook} />} />
-          </Route>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <Store.Provider value={{ state, dispatch, defbook }}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route element={<PrivateComponent />}>
+              <Route
+                path="/"
+                element={
+                  <Banner />
+                }
+              />
+              <Route
+                path="/add"
+                element={<AddProduct defbook={defbook} setdefbook={setdefbook} />}
+              />
+              <Route
+                path="/cart"
+                element={<Cart />}
+              />
+            </Route>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/signup" />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </Store.Provider>
     </div>
   );
 }
 
 export default App;
+export { Store }

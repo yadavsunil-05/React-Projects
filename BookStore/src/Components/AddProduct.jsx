@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./AddProduct.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Store } from "../App";
 
-function AddProduct({ defbook, setdefbook }) {
+function AddProduct({ setdefbook }) {
   const [title, setBName] = useState();
   const [book_image_width, setPrice] = useState();
   const [description, setDesc] = useState()
   const [book_image, setImage] = useState();
+
+  const { defbook } = useContext(Store)
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -34,13 +37,13 @@ function AddProduct({ defbook, setdefbook }) {
   return (
     <>
       <div className="prod-container">
+        <h1>Add Book Today! Start Selling.</h1>
         <div className="form-container">
-          <h1>Add Book Today! Start Selling.</h1>
-          <form className="form" onSubmit={handleAdd}>
+          <form onSubmit={handleAdd}>
             <input
               type="text"
               placeholder="Enter Book Name"
-              className="input"
+              className="add-input"
               value={title}
               onChange={(e) => setBName(e.target.value)}
             />
@@ -48,7 +51,7 @@ function AddProduct({ defbook, setdefbook }) {
             <input
               type="number"
               placeholder="Enter Price"
-              className="input"
+              className="add-input"
               value={book_image_width}
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -56,7 +59,7 @@ function AddProduct({ defbook, setdefbook }) {
             <input
               type="text"
               placeholder="Enter Description"
-              className="input"
+              className="add-input"
               value={description}
               onChange={(e) => setDesc(e.target.value)}
             />
@@ -64,7 +67,7 @@ function AddProduct({ defbook, setdefbook }) {
             <input
               text="text"
               placeholder="Enter Image Url"
-              className="input"
+              className="add-input"
               value={book_image}
               onChange={(e) => setImage(e.target.value)}
             />

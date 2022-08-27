@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from "../assets/logo.png"
+import { FaShoppingCart } from "react-icons/fa"
+import { useContext } from "react";
+import { Store } from "../App";
 
 function Navbar() {
   const auth = localStorage.getItem("user");
@@ -14,6 +17,8 @@ function Navbar() {
     navigate("/signup")
   }
 
+  const { state } = useContext(Store)
+  const { cart } = state
 
   return (
     <div>
@@ -34,6 +39,12 @@ function Navbar() {
                 <li>
                   <Link to="/add" className="nav-link-tag">
                     Add Book
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cart" className="nav-link-tag">
+                    <FaShoppingCart />
+                    <span>{cart.length}</span>
                   </Link>
                 </li>
                 <li>
