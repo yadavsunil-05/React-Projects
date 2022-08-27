@@ -48,7 +48,7 @@ function App() {
               />
               <Route
                 path="/add"
-                element={<AddProduct defbook={defbook} setdefbook={setdefbook} />}
+                element={<AddProduct setdefbook={setdefbook} />}
               />
               <Route
                 path="/cart"

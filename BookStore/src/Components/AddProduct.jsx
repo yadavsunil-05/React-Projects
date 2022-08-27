@@ -65,7 +65,7 @@ function AddProduct({ setdefbook }) {
             />
             <br />
             <input
-              text="text"
+              type="text"
               placeholder="Enter Image Url"
               className="add-input"
               value={book_image}

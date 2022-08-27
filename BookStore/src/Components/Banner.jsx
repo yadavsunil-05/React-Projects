@@ -5,7 +5,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Banner() {
   return (
-    <>
+    <React.Fragment>
       <div className='banner'>
         <div className="jumbotron main-header-sec" id="jumbotron">
           <div className="jumbotron-txt-container-1">
@@ -24,7 +24,7 @@ function Banner() {
         </div>
       </div>
       <Book />
-    </>
+    </React.Fragment>
   )
 }
 
