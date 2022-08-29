@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import cartLogo from "../assets/cart.gif";
 import "./Cart.css";
-import { useContext } from "react";
-import { Store } from "../App";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, incrementQty, decrementQty } from "../actions/index";
 
 function Cart() {
-  const { state, dispatch } = useContext(Store)
-  const { cart } = state;
+  const { cart } = useSelector((state) => state.cartReducer);
+  const dispatch = useDispatch();
+
   const [total, setSubtotal] = useState(0);
 
   useEffect(() => {
@@ -42,39 +43,19 @@ function Cart() {
                       }}
                       className="quant-cont"
                     >
-                      <button
-                        onClick={() => {
-                          dispatch({
-                            type: "DECREMENT_QTY",
-                            data: prod,
-                          });
-                        }}
-                      >
+                      <button onClick={() => dispatch(decrementQty(prod))}>
                         -
                       </button>
                       <span>{prod.qty}</span>
-                      <button
-                        onClick={() =>
-                          dispatch({
-                            type: "INCREMENT_QTY",
-                            data: prod,
-                          })
-                        }
-                      >
+                      <button onClick={() => dispatch(incrementQty(prod))}>
                         +
                       </button>
                     </div>
-                    <p className="btn-area" onClick={() =>
-                      dispatch({
-                        type: "REMOVE_FROM_CART",
-                        data: prod,
-                      })
-                    }>
-                      <span
-                        className="btn2"
-                      >
-                        Remove
-                      </span>
+                    <p
+                      className="btn-area"
+                      onClick={() => dispatch(removeFromCart(prod))}
+                    >
+                      <span className="btn2">Remove</span>
                     </p>
                   </div>
                 </div>

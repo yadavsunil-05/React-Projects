@@ -1,29 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./AddProduct.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Store } from "../App";
+import { addUserBook } from "../actions/index";
+import { useDispatch } from "react-redux";
 
-function AddProduct({ setdefbook }) {
+function AddProduct() {
   const [title, setBName] = useState();
   const [book_image_width, setPrice] = useState();
-  const [description, setDesc] = useState()
+  const [description, setDesc] = useState();
   const [book_image, setImage] = useState();
 
-  const { defbook } = useContext(Store)
+  const dispatch = useDispatch();
 
   const handleAdd = async (e) => {
     e.preventDefault();
     if (title && book_image_width && description && book_image) {
-      setdefbook([
-        ...defbook,
-        {
+      dispatch(
+        addUserBook({
+          rank: new Date().getTime().toString(),
           title,
           book_image_width,
           description,
           book_image,
-        },
-      ]);
+        })
+      );
       toast.success("Book Ready to Sell..");
       setBName("");
       setPrice("");

@@ -10,10 +10,6 @@ const ToDoApp = () => {
   const { todo } = useSelector((state) => state.reducer)
   const dispatch = useDispatch()
 
-  const details = {
-    list: inputVal,
-    id: new Date().getTime()
-  }
 
   console.log(todo);
 
@@ -27,18 +23,22 @@ const ToDoApp = () => {
         </figure>
         <div className="addItems">
           <input type="text" placeholder='Add todo..' value={inputVal} onChange={(e) => setInputVal(e.target.value)} />
-          <i className="fa fa-plus add-btn" onClick={() => dispatch(addToDo(details))}></i>
+          <i className="fa fa-plus add-btn" onClick={() => dispatch(addToDo(inputVal), setInputVal(""))}></i>
         </div>
-        <div>
+        <div className="showItems">
           {
-            todo.map((txt) => (
-              <div style={{ display: "flex" }} key={txt.id}>
-                <p style={{ color: "white" }} >{txt.list}</p>
-                <button onClick={() => dispatch(deleteToDO(txt.id))}>Delete</button>
+            todo.map(item => (
+              <div className="eachItem" key={item.id}>
+                <h3>{item.list}</h3>
+                <i className="far fa-trash-alt add-btn" title="Delete Item"
+                  onClick={() => dispatch(deleteToDO(item.id))}
+                ></i>
               </div>
             ))
           }
-          <button>Remove All</button>
+        </div>
+        <div className="showItems">
+          <button className="btn effect04" data-sm-link-text="Remove All" onClick={() => dispatch(removeAll())}><span> CHECK LIST </span> </button>
         </div>
       </div>
     </div>

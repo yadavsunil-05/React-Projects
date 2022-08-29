@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { auth } from "../firebase";
 import "./SignUp.css";
-
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -12,29 +12,23 @@ function SignUp() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const auth = localStorage.getItem("user")
-    if (auth)
-      navigate("/")
-  }, [])
+    const auth = localStorage.getItem("user");
+    if (auth) navigate("/");
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (name != "" && email != "" && password != "") {
-      localStorage.setItem("signin", JSON.stringify({ name, email, password }));
+    try {
+      await auth.createUserWithEmailAndPassword(email, password);
       navigate("/login");
-      toast.success("User Registered!!!")
-      setName("")
-      setEmail("")
-      setPassword("")
+      toast.success("User Registered!!!");
+    } catch (err) {
+      toast.error(err.message.slice(0, 48));
     }
-    else {
-      toast.error("Please Enter All the Details.")
-      setName("")
-      setEmail("")
-      setPassword("")
-    }
+    setName("");
+    setEmail("");
+    setPassword("");
   }
-
 
   return (
     <div className="signup-banner">

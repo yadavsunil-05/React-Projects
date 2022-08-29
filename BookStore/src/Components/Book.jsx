@@ -3,9 +3,8 @@ import "./Book.css";
 import { AiOutlineHeart, AiOutlineLike } from "react-icons/ai";
 import { BsBook, BsCart2 } from "react-icons/bs";
 import Pagination from "./Pagination";
-import { useContext } from "react";
-import { Store } from "../App";
-
+import { useSelector, useDispatch } from "react-redux/es/exports";
+import { addToCart } from "../actions/index";
 
 function Books() {
   const [queryStr, setQueryStr] = useState("");
@@ -14,24 +13,24 @@ function Books() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(4);
 
-  const { state, dispatch, defbook } = useContext(Store)
-  const { cart } = state
-
+  const { cart } = useSelector((state) => state.cartReducer);
+  const { books } = useSelector((state) => state.bookReducer);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setQueryStr(e.target.value);
     if (queryStr) {
-      const arr = defbook.filter((book) =>
+      const arr = books.filter((book) =>
         book.title.toLowerCase().includes(queryStr.toLowerCase())
       );
       setFilteredData(arr);
     } else {
-      setFilteredData(defbook);
+      setFilteredData(books);
     }
   };
 
   useEffect(() => {
-    if (queryStr === "") setFilteredData(defbook);
+    if (queryStr === "") setFilteredData(books);
   });
 
   let indexOfLastPost = currentPage * postPerPage;
@@ -60,8 +59,8 @@ function Books() {
         <button className="search-btn">Search</button>
       </div>
       <div className="Book-container">
-        {filteredData.map((book, indx) => (
-          <div key={indx} className="card-container">
+        {filteredData.map((book) => (
+          <div key={book.rank} className="card-container">
             <img src={book.book_image} alt="book" />
             <div className="card-info">
               <h3 className="book-name">{book.title}</h3>
@@ -75,19 +74,21 @@ function Books() {
                   <AiOutlineHeart />
                 </span>
                 <span
-                  className={cart.some(b => b.id === book.rank) ?
-                    "update-btn disabled" : "update-btn like-btn"}
+                  className={
+                    cart.some((b) => b.id === book.rank)
+                      ? "update-btn disabled"
+                      : "update-btn like-btn"
+                  }
                   onClick={() =>
-                    dispatch({
-                      type: "ADD_TO_CART",
-                      data: {
+                    dispatch(
+                      addToCart({
                         id: book.rank,
                         qty: 1,
                         title: book.title,
                         image: book.book_image,
                         price: book.book_image_width,
-                      },
-                    })
+                      })
+                    )
                   }
                 >
                   <BsCart2 />
@@ -105,7 +106,7 @@ function Books() {
       </div>
       <Pagination
         postPerPage={postPerPage}
-        totalPost={defbook.length}
+        totalPost={books.length}
         paginate={paginate}
       />
     </div>

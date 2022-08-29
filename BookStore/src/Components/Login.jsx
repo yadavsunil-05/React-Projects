@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { auth } from "../firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -18,24 +19,20 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (email != "" && password != "") {
-      const details = JSON.parse(localStorage.getItem("signin"));
-
-      if (!details) {
-        navigate("/signup");
-        toast.error("Register Yourself!!!");
-      } else if (email === details.email && password === details.password) {
-        localStorage.setItem("user", JSON.stringify({ email, password }));
-        navigate("/");
-        toast.success("Succefully Logged In!!!");
-      } else {
-        toast.error("Please Enter Correct Details!!");
-      }
-    } else {
-      toast.error("Enter All the field!!");
+    if (!email || !password) {
+      toast.error("Email or Password cannot be Empty.");
+      return;
     }
-    setEmail("")
-    setPassword("")
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      localStorage.setItem("user", JSON.stringify({ email }));
+      navigate("/");
+      toast.success("Succefully Logged In!!!");
+    } catch (err) {
+      toast.error(`${err.message.slice(0, 48)}`);
+    }
+    setEmail("");
+    setPassword("");
   };
 
   return (

@@ -1,7 +1,10 @@
 function addToDo(data) {
   return {
     type: "ADD_TODO",
-    data: data
+    payload: {
+      id: new Date().getTime().toString(),
+      list: data
+    }
   }
 }
 
